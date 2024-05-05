@@ -4,6 +4,11 @@ def removeElement(nums, val: int) -> int:
     end = len(nums) - 1
     
     while start < end :
+        if nums[start] == val and nums[end] != val:
+            nums[start], nums[end] = nums[end], nums[start]
+            start += 1
+            end -= 1 
+        
         if nums[start] != val and nums[end] == val:
             start += 1
         
@@ -12,11 +17,6 @@ def removeElement(nums, val: int) -> int:
         
         if nums[start] != val and nums[end] != val:
             start += 1
-        
-        if nums[start] == val and nums[end] != val:
-            nums[start], nums[end] = nums[end], nums[start]
-            start += 1
-            end -= 1 
     
     for i in range(len(nums)):
         if nums[i] != val:
